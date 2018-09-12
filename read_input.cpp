@@ -34,7 +34,7 @@ std::vector<SLTS> readWLfile(std::string WLfilename)
 
 	std::string line;
 	std::vector<std::string> lineelements;
-	std::vector<float> WLS;
+	std::vector<double> WLS;
 	SLTS slbndline;
 	while (std::getline(fs, line))
 	{
@@ -72,11 +72,11 @@ std::vector<SLTS> readWLfile(std::string WLfilename)
 			}
 
 
-			slbndline.time = std::stof(lineelements[0]);
+			slbndline.time = std::stod(lineelements[0]);
 
 			for (int n = 1; n < lineelements.size(); n++)
 			{
-				WLS.push_back(std::stof(lineelements[n]));
+				WLS.push_back(std::stod(lineelements[n]));
 			}
 
 
@@ -142,6 +142,12 @@ Param readparamstr(std::string line, Param param)
 		param.GPUDEVICE = std::stoi(parametervalue);
 	}
 
+	parameterstr = "doubleprecision";
+	parametervalue = findparameter(parameterstr, line);
+	if (!parametervalue.empty())
+	{
+		param.doubleprecision = std::stoi(parametervalue);
+	}
 	///////////////////////////////////////////////////////
 	// Flow parameters
 	//
@@ -248,8 +254,8 @@ Param readparamstr(std::string line, Param param)
 	{
 		std::vector<std::string> nodes = split(parametervalue, ',');
 		TSnode node;
-		node.x = std::stof(nodes[0]);
-		node.y = std::stof(nodes[1]);
+		node.x = std::stod(nodes[0]);
+		node.y = std::stod(nodes[1]);
 
 		//i and j are calculated in the Sanity check
 
@@ -299,6 +305,14 @@ Param readparamstr(std::string line, Param param)
 
 		
 	}
+
+	parameterstr = "resetmax";
+	parametervalue = findparameter(parameterstr, line);
+	if (!parametervalue.empty())
+	{
+		param.resetmax = std::stoi(parametervalue);
+	}
+
 
 	parameterstr = "leftbndfile";
 	parametervalue = findparameter(parameterstr, line);
@@ -632,23 +646,23 @@ double setendtime(Param XParam, std::vector<SLTS> leftWLbnd, std::vector<SLTS> r
 	if (!leftWLbnd.empty() && XParam.left == 1)
 	{
 		tempSLTS = leftWLbnd.back();
-		endtime = min((float) endtime, tempSLTS.time);
+		endtime = min( endtime, tempSLTS.time);
 		
 	}
 	if (!rightWLbnd.empty() && XParam.right == 1)
 	{
 		tempSLTS = rightWLbnd.back();
-		endtime = min((float)endtime, tempSLTS.time);
+		endtime = min(endtime, tempSLTS.time);
 	}
 	if (!topWLbnd.empty() && XParam.top == 1)
 	{
 		tempSLTS = topWLbnd.back();
-		endtime = min((float)endtime, tempSLTS.time);
+		endtime = min(endtime, tempSLTS.time);
 	}
 	if (!botWLbnd.empty() && XParam.bot == 1)
 	{
 		tempSLTS = botWLbnd.back();
-		endtime = min((float)endtime, tempSLTS.time);
+		endtime = min(endtime, tempSLTS.time);
 	}
 
 	return endtime;
