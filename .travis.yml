@@ -7,18 +7,6 @@ compiler:
 
 matrix:
   include:
-    - name: CUDA 8
-      env:
-      - CUDA=8.0.61-1
-      - CUDA_SHORT=8.0
-      - UBUNTU_VERSION=ubuntu1604
-      dist: xenial
-    - name: CUDA 9
-      env:
-      - CUDA=9.2.148-1
-      - CUDA_SHORT=9.2
-      - UBUNTU_VERSION=ubuntu1604
-      dist: xenial
     - name: CUDA 10
       env:
       - CUDA=10.1.105-1
@@ -34,6 +22,7 @@ before_install:
   - sudo apt-key add 7fa2af80.pub
   - sudo apt update -qq
   - sudo apt install -y cuda-core-${CUDA_SHORT/./-} cuda-cudart-dev-${CUDA_SHORT/./-} cuda-cufft-dev-${CUDA_SHORT/./-}
+  - sudo apt install -y libnetcdf-dev libnetcdff-dev
   - sudo apt clean
   - CUDA_HOME=/usr/local/cuda-${CUDA_SHORT}
   - LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
