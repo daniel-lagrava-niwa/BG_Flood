@@ -7,3 +7,4 @@ The core SWE engine and adaptivity has been inspired and taken from St Venant so
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8d871cf493e94a6eb474eaa30f573583)](https://www.codacy.com/project/CyprienBosserelle/Basil_Cart_StV/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CyprienBosserelle/Basil_Cart_StV&amp;utm_campaign=Badge_Grade_Dashboard)
+[![Build Status](https://travis-ci.org/daniel-lagrava-niwa/BG_Flood.svg?branch=master)](https://travis-ci.org/daniel-lagrava-niwa/BG_Flood)
