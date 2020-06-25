@@ -389,10 +389,9 @@ extern cudaChannelFormatDesc channelDescVwind;
 extern cudaChannelFormatDesc channelDescPatm;
 extern cudaChannelFormatDesc channelDescRain;
 
-template <class T> T sq(T a);
-
-template <class T> const T& max(const T& a, const T& b);
-template <class T> const T& min(const T& a, const T& b);
+template <class T> T utils::sq(T a);
+template <class T> const T& utils::max(const T& a, const T& b);
+template <class T> const T& utils::min(const T& a, const T& b);
 
 template <class T> void carttoBUQ(int nblk, int nx, int ny, double xo, double yo, double dx, double* blockxo, double* blockyo, T * zb, T *&zb_buq);
 template <class T> void interp2BUQ(int nblk, double blksize, double blkdx, double* blockxo, double* blockyo, int nx, int ny, double xo, double xmax, double yo, double ymax, double dx, T * zb, T *&zb_buq);

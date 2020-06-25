@@ -235,8 +235,8 @@ std::vector<SLTS> readNestfile(std::string ncfile, int hor , double bndxo, doubl
 		{
 			//
 			// Read// interpolate data for each bnds
-			indxx = max(min((int)((bndxo+(dx*ibnd) - xo) / dx), nx - 1), 0);
-			indyy = max(min((int)((bndy - yo) / dx), ny - 1), 0);
+			indxx = utils::max(utils::min((int)((bndxo+(dx*ibnd) - xo) / dx), nx - 1), 0);
+			indyy = utils::max(utils::min((int)((bndy - yo) / dx), ny - 1), 0);
 
 			if (hor == 0)
 			{
@@ -1162,7 +1162,7 @@ Param checkparamsanity(Param XParam)
 		
 	//	if (slbnd.back().time>0.0 && wndbnd.back().time > 0.0)
 	//	{
-	//		XParam.endtime = min(slbnd.back().time, wndbnd.back().time);
+	//		XParam.endtime = utils::min(slbnd.back().time, wndbnd.back().time);
 	//	}
 	//
 	//	
@@ -1247,23 +1247,23 @@ double setendtime(Param XParam)
 	if (XParam.leftbnd.on)
 	{
 		tempSLTS = XParam.leftbnd.data.back();
-		endtime = min( endtime, tempSLTS.time);
+		endtime = utils::min( endtime, tempSLTS.time);
 		
 	}
 	if (XParam.rightbnd.on)
 	{
 		tempSLTS = XParam.rightbnd.data.back();
-		endtime = min(endtime, tempSLTS.time);
+		endtime = utils::min(endtime, tempSLTS.time);
 	}
 	if (XParam.topbnd.on)
 	{
 		tempSLTS = XParam.topbnd.data.back();
-		endtime = min(endtime, tempSLTS.time);
+		endtime = utils::min(endtime, tempSLTS.time);
 	}
 	if (XParam.botbnd.on)
 	{
 		tempSLTS = XParam.botbnd.data.back();
-		endtime = min(endtime, tempSLTS.time);
+		endtime = utils::min(endtime, tempSLTS.time);
 	}
 
 	return endtime;

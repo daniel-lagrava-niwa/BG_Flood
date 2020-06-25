@@ -1302,7 +1302,7 @@ int readvardata(std::string filename, std::string Varname, int ndims, int hotste
 		nt = (int)ddim[0];
 		ny = (int)ddim[1];
 		nx = (int)ddim[2];
-		start[0] = min(hotstep, nt - 1);
+		start[0] = utils::min(hotstep, nt - 1);
 		start[1] = 0;
 		start[2] = 0;
 
@@ -1394,7 +1394,7 @@ int readvardataD(std::string filename, std::string Varname, int ndims, int hotst
 		nt = (int)ddim[0];
 		ny = (int)ddim[1];
 		nx = (int)ddim[2];
-		start[0] = min(hotstep, nt - 1);
+		start[0] = utils::min(hotstep, nt - 1);
 		start[1] = 0;
 		start[2] = 0;
 
@@ -1590,7 +1590,7 @@ int readhotstartfile(Param XParam, int * leftblk, int *rightblk, int * topblk, i
 				for (int i = 0; i < 16; i++)
 				{
 					int n = i + j * 16 + bl * 256;
-					zs[n] = max(zs[n], zb[n]);
+					zs[n] = utils::max(zs[n], zb[n]);
 					//unpacked_value = packed_value * scale_factor + add_offset
 				}
 			}
@@ -1668,7 +1668,7 @@ int readhotstartfile(Param XParam, int * leftblk, int *rightblk, int * topblk, i
 					for (int i = 0; i < 16; i++)
 					{
 						int n = i + j * 16 + bl * 256;
-						hh[n] = max(zs[n] - zb[n],(float) XParam.eps);
+						hh[n] = utils::max(zs[n] - zb[n],(float) XParam.eps);
 					}
 
 				}
@@ -1863,7 +1863,7 @@ int readhotstartfileD(Param XParam, int * leftblk, int *rightblk, int * topblk, 
 				for (int i = 0; i < 16; i++)
 				{
 					int n = i + j * 16 + bl * 256;
-					zs[n] = max(zs[n], zb[n]);
+					zs[n] = utils::max(zs[n], zb[n]);
 					//unpacked_value = packed_value * scale_factor + add_offset
 				}
 			}
@@ -1941,7 +1941,7 @@ int readhotstartfileD(Param XParam, int * leftblk, int *rightblk, int * topblk, 
 					for (int i = 0; i < 16; i++)
 					{
 						int n = i + j * 16 + bl * 256;
-						hh[n] = max(zs[n] - zb[n], XParam.eps);
+						hh[n] = utils::max(zs[n] - zb[n], XParam.eps);
 					}
 
 				}
