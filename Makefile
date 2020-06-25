@@ -275,3 +275,10 @@ clean:
 	rm -rf ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/template
 
 clobber: clean
+
+.PHONY: docs
+docs:
+	@doxygen docs/Doxyfile
+
+
+
